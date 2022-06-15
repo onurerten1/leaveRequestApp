@@ -1,0 +1,39 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<Dialog id="idApprovedList" title="{i18n>ApprovedRequests}">
+		<Table id="idApprovedTable" inset="false" items="{ path: 'approvedRequestsList>/' }">
+			<columns>
+				<Column>
+					<Text text="{i18n>NameSurname}"/>
+				</Column>
+				<Column minScreenWidth="Tablet" demandPopin="true">
+					<Text text="{i18n>startDate}"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="End">
+					<Text text="{i18n>endDate}"/>
+				</Column>
+				<Column minScreenWidth="Desktop" demandPopin="true" hAlign="Center">
+					<Text text="{i18n>Days}"/>
+				</Column>
+				<Column hAlign="End">
+					<Text text="{i18n>LeaveType}"/>
+				</Column>
+			</columns>
+			<items>
+				<ColumnListItem>
+					<cells>
+						<ObjectIdentifier title="{approvedRequestsList>nameSurname}"/>
+						<Text
+							text="{ path: 'approvedRequestsList>startDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'short', pattern: 'dd.MM.yyyy' } }"/>
+						<Text
+							text="{ path: 'approvedRequestsList>endDate', type: 'sap.ui.model.type.Date', formatOptions: { style: 'short', pattern: 'dd.MM.yyyy' } }"/>
+						<ObjectNumber number="{approvedRequestsList>days}"/>
+						<Text text="{path: 'approvedRequestsList>leaveType', formatter: '.formatter.getLeaveType'}"/>
+					</cells>
+				</ColumnListItem>
+			</items>
+		</Table>
+		<HBox alignItems="Center" justifyContent="End">
+			<Button text="{i18n>Close}" press="onFragmentExitShow" type="Transparent" />
+		</HBox>
+	</Dialog>
+</core:FragmentDefinition>

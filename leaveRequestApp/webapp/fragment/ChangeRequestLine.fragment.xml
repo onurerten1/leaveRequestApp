@@ -1,0 +1,36 @@
+<c:FragmentDefinition xmlns="sap.m" xmlns:c="sap.ui.core" xmlns:f="sap.ui.layout.form">
+	<Dialog id="idEditLine" title="{i18n>ChangeRequest}">
+		<VBox>
+			<f:SimpleForm id="idFragmentSimpleform" editable="true" layout="ResponsiveGridLayout" title="{i18n>EditRequest}" labelSpanXL="3"
+				labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0"
+				columnsXL="1" columnsL="1" columnsM="1" singleContainerFullSize="false">
+				<f:content>
+					<Label text="{i18n>NameSurname}"/>
+					<Text text="{request>/nameSurname}"/>
+					<Label text="{i18n>startDate}" required="true"/>
+					<DatePicker id="idStartDateF" change="handleChange" class="sapUiSmallMarginBottom" dateValue="{request>/startDate}"
+						displayFormat="dd.MM.yyyy" required="true"/>
+					<Label text="{i18n>endDate}" required="true"/>
+					<DatePicker id="idEndDateF" change="handleChange" class="sapUiSmallMarginBottom" dateValue="{request>/endDate}" displayFormat="dd.MM.yyyy"
+						required="true"/>
+					<Label text="{i18n>LeaveType}"/>
+					<Select id="idLeaveTypeF" selectedKey="{request>/leaveType}">
+						<items>
+							<c:Item text="{i18n>PaidLeave}" key="0"/>
+							<c:Item text="{i18n>UnpaidLeave}" key="1"/>
+							<c:Item text="{i18n>MaternalLeave}" key="2"/>
+							<c:Item text="{i18n>PaternalLeave}" key="3"/>
+							<c:Item text="{i18n>IllnessLeave}" key="4"/>
+							<c:Item text="{i18n>MoveLeave}" key="5"/>
+						</items>
+					</Select>
+					<Label text=""/>
+				</f:content>
+			</f:SimpleForm>
+			<HBox alignItems="Center" justifyContent="End">
+				<Button text="{i18n>Save}" type="Emphasized" press="onEditRequest" icon="sap-icon://save"/>
+				<Button text="{i18n>Close}" press="onFragmentExitEdit" type="Transparent"/>
+			</HBox>
+		</VBox>
+	</Dialog>
+</c:FragmentDefinition>
